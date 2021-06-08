@@ -7,8 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PersonService.Model.Context;
-using PersonService.Services;
-using PersonService.Services.Implementations;
+using PersonService.Business;
+using PersonService.Business.Implementations;
+using PersonService.Repository.Implementations;
+using PersonService.Repository;
 
 namespace PersonService
 {
@@ -33,7 +35,8 @@ namespace PersonService
             services.AddApiVersioning();
 
             //Dependency Injection
-            services.AddScoped<IPersonService, PersonServiceImplementation>();
+            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
 
             services.AddSwaggerGen(c =>
             {

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "K+8jRDtj1u27RnwIQlGJ8pRFfvUzwVW+ZifBBUeIynv3Us1owA6jxE58iPPzn8P7livHTkJ8cjh+TDiJtDSu6A==",
+  "dgSpecHash": "EOYpXsFQM8fyfkU1vDlgvBHEMUoZw5Ht+ufgW6jBDPanSnoqBpAuF72BNf6F+VvE7NeXP53LBE0b6xE5pRQSvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\wallison\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\wallison\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\wallison\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\wallison\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

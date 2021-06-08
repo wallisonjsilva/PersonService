@@ -36,3 +36,4 @@ C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonServic
 C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\obj\Debug\net5.0\ref\PersonService.dll
 C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\obj\Debug\net5.0\PersonService.pdb
 C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\obj\Debug\net5.0\PersonService.genruntimeconfig.cache
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll

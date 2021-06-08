@@ -11,26 +11,37 @@ using PersonService.Business;
 using PersonService.Business.Implementations;
 using PersonService.Repository.Implementations;
 using PersonService.Repository;
+using Serilog;
+using System.Collections.Generic;
 
 namespace PersonService
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
-        }
+            Environment = environment;
 
-        public IConfiguration Configuration { get; }
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateLogger();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
 
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+
+            if (Environment.IsDevelopment())
+            {
+                MigrateDatabase(connection);
+            }
 
             services.AddApiVersioning();
 
@@ -64,6 +75,22 @@ namespace PersonService
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void MigrateDatabase(String connection)
+        {
+            try {
+                var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
+                var evolve = new Evolve.Evolve(evolveConnection, msg => Log.Information(msg))
+                {
+                    Locations = new List<string> { "script/db/migrations", "script/db/dataset" },
+                    IsEraseDisabled = true,
+                };
+                evolve.Migrate();
+            } catch(Exception ex) {
+                Log.Error("Database migration failed", ex);
+                throw;
+            }
         }
     }
 }

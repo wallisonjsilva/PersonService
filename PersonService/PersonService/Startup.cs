@@ -13,6 +13,7 @@ using PersonService.Repository.Implementations;
 using PersonService.Repository;
 using Serilog;
 using System.Collections.Generic;
+using PersonService.Repository.Generic;
 
 namespace PersonService
 {
@@ -48,6 +49,10 @@ namespace PersonService
             //Dependency Injection
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+
+            services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
             services.AddSwaggerGen(c =>
             {

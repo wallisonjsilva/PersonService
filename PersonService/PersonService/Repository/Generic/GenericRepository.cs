@@ -1,74 +1,78 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PersonService.Model;
+using Microsoft.EntityFrameworkCore;
+using PersonService.Model.Base;
 using PersonService.Model.Context;
 
-namespace PersonService.Repository.Implementations
+namespace PersonService.Repository.Generic
 {
-    public class PersonRepositoryImplementation : IPersonRepository
+    public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
         private MySQLContext _context;
 
-        public PersonRepositoryImplementation(MySQLContext context)
+        private DbSet<T> _dataset;
+
+        public GenericRepository(MySQLContext context)
         {
             _context = context;
-        }
-        public List<Person> FindAll()
-        {
-            return _context.Persons.ToList();
+            _dataset = _context.Set<T>();
         }
 
-        public Person FindByID(long id)
+        public List<T> FindAll()
         {
-            return _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
+            return _dataset.ToList();
         }
 
-        public Person Create(Person person)
+        public T FindByID(long id)
+        {
+            return _dataset.SingleOrDefault(b => b.id.Equals(id));
+        }
+
+        public T Create(T item)
         {
             try
             {
-                _context.Add(person);
+                _dataset.Add(item);
                 _context.SaveChanges();
+                return item;
             }
             catch (Exception)
             {
                 throw;
             }
-            return person;
         }
 
-        public Person Update(Person person)
+        public T Update(T item)
         {
-            if (!Exists(person.Id)) return null;
-
-            var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
+            var result = _dataset.SingleOrDefault(b => b.id.Equals(item.id));
 
             if (result != null)
             {
                 try
                 {
-                    _context.Entry(result).CurrentValues.SetValues(person);
+                    _context.Entry(result).CurrentValues.SetValues(item);
                     _context.SaveChanges();
+                    return result;
                 }
                 catch (Exception)
                 {
                     throw;
                 }
+            } else {
+                return null;
             }
-
-            return person;
         }
 
         public void Delete(long id)
         {
-            var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
+            var result = _dataset.SingleOrDefault(b => b.id.Equals(id));
 
             if (result != null)
             {
                 try
                 {
-                    _context.Persons.Remove(result);
+                    _dataset.Remove(result);
                     _context.SaveChanges();
                 }
                 catch (Exception)
@@ -80,7 +84,7 @@ namespace PersonService.Repository.Implementations
 
         public bool Exists(long id)
         {
-            return _context.Persons.Any(p => p.Id.Equals(id));
+            return _dataset.Any(b => b.id.Equals(id));
         }
     }
 }

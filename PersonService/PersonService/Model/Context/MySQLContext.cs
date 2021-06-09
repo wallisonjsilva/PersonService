@@ -10,5 +10,7 @@ namespace PersonService.Model.Context
         public MySQLContext(DbContextOptions<MySQLContext> options) : base(options) { }
 
         public virtual DbSet<Person> Persons { get; set; }
+
+        public virtual DbSet<Book> Books { get; set; }
     }
 }

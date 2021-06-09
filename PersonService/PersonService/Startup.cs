@@ -13,6 +13,8 @@ using PersonService.Repository;
 using Serilog;
 using System.Collections.Generic;
 using PersonService.Repository.Generic;
+using PersonService.Hypermedia.Filters;
+using PersonService.Hypermedia.Enricher;
 
 namespace PersonService
 {
@@ -42,6 +44,12 @@ namespace PersonService
             {
                 MigrateDatabase(connection);
             }
+
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+            filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
+
+            services.AddSingleton(filterOptions);
 
             services.AddApiVersioning();
 
@@ -77,6 +85,7 @@ namespace PersonService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi","{controller=values}/{id?}");
             });
         }
 

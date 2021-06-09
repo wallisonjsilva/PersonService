@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using PersonService.Model;
 using PersonService.Business;
 using PersonService.Data.VO;
+using PersonService.Hypermedia.Filters;
 
 namespace PersonService.Controllers
 {
@@ -21,12 +22,14 @@ namespace PersonService.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
            return Ok(_personBusiness.FindAll());
         }
 
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
             var person = _personBusiness.FindByID(id);
@@ -35,6 +38,7 @@ namespace PersonService.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody] PersonVO person)
         {
             if(person == null) return BadRequest();
@@ -42,6 +46,7 @@ namespace PersonService.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody] PersonVO person)
         {
             if(person == null) return BadRequest();

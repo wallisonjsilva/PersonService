@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PersonService.Business;
 using PersonService.Data.VO;
+using PersonService.Hypermedia.Filters;
 using PersonService.Model;
 
 namespace PersonService.Controllers
@@ -21,12 +22,14 @@ namespace PersonService.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
            return Ok(_bookBusiness.FindAll());
         }
 
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
             var person = _bookBusiness.FindByID(id);
@@ -35,6 +38,7 @@ namespace PersonService.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody] BookVO book)
         {
             if(book == null) return BadRequest();
@@ -42,6 +46,7 @@ namespace PersonService.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody] BookVO book)
         {
             if(book == null) return BadRequest();

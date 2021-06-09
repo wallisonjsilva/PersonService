@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using PersonService.Hypermedia;
+using PersonService.Hypermedia.Abstract;
 
 namespace PersonService.Data.VO
 {
-    public class PersonVO
+    public class PersonVO : ISupportsHyperMedia
     {
         public long Id { get; set; }
         
@@ -13,5 +16,6 @@ namespace PersonService.Data.VO
         public string Address {get; set;}
 
         public string Gender {get; set;}
+        public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
     }
 }

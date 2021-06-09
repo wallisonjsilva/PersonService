@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using PersonService.Repository.Generic;
 using PersonService.Hypermedia.Filters;
 using PersonService.Hypermedia.Enricher;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace PersonService
 {
@@ -62,7 +63,18 @@ namespace PersonService
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PersonService", Version = "v1" });
+                c.SwaggerDoc("v1",
+                new OpenApiInfo
+                {
+                    Title = "PersonService",
+                    Version = "v1",
+                    Description = "API RESTful",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Wallison Jr Cardoso Soares Silva",
+                        Url = new Uri("https://github.com/wallisonjsilva")
+                    }
+                });
             });
         }
 
@@ -80,18 +92,26 @@ namespace PersonService
 
             app.UseRouting();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonService - v1"));
+           
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapControllerRoute("DefaultApi","{controller=values}/{id?}");
+                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
         }
 
         private void MigrateDatabase(String connection)
         {
-            try {
+            try
+            {
                 var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
                 var evolve = new Evolve.Evolve(evolveConnection, msg => Log.Information(msg))
                 {
@@ -99,7 +119,9 @@ namespace PersonService
                     IsEraseDisabled = true,
                 };
                 evolve.Migrate();
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.Error("Database migration failed", ex);
                 throw;
             }

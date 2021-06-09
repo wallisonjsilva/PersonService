@@ -26,7 +26,7 @@ namespace PersonService.Repository.Generic
 
         public T FindByID(long id)
         {
-            return _dataset.SingleOrDefault(b => b.id.Equals(id));
+            return _dataset.SingleOrDefault(b => b.Id.Equals(id));
         }
 
         public T Create(T item)
@@ -45,7 +45,7 @@ namespace PersonService.Repository.Generic
 
         public T Update(T item)
         {
-            var result = _dataset.SingleOrDefault(b => b.id.Equals(item.id));
+            var result = _dataset.SingleOrDefault(b => b.Id.Equals(item.Id));
 
             if (result != null)
             {
@@ -66,7 +66,7 @@ namespace PersonService.Repository.Generic
 
         public void Delete(long id)
         {
-            var result = _dataset.SingleOrDefault(b => b.id.Equals(id));
+            var result = _dataset.SingleOrDefault(b => b.Id.Equals(id));
 
             if (result != null)
             {
@@ -84,7 +84,7 @@ namespace PersonService.Repository.Generic
 
         public bool Exists(long id)
         {
-            return _dataset.Any(b => b.id.Equals(id));
+            return _dataset.Any(b => b.Id.Equals(id));
         }
     }
 }

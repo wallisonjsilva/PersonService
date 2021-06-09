@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PersonService.Data.Converter.Implementations;
+using PersonService.Data.VO;
 using PersonService.Model;
 using PersonService.Model.Context;
 using PersonService.Repository;
@@ -11,28 +13,35 @@ namespace PersonService.Business.Implementations
     {
         private readonly IRepository<Person> _repository;
 
+        private readonly PersonConverter _converter;
+
         public PersonBusinessImplementation(IRepository<Person> respository)
         {
             _repository = respository;
+            _converter = new PersonConverter();
         }
-        public List<Person> FindAll()
+        public List<PersonVO> FindAll()
         {
-            return _repository.FindAll();
-        }
-
-        public Person FindByID(long id)
-        {
-            return _repository.FindByID(id);
+            return _converter.Parse(_repository.FindAll());
         }
 
-        public Person Create(Person person)
+        public PersonVO FindByID(long id)
         {
-            return _repository.Create(person);
+            return _converter.Parse(_repository.FindByID(id));
         }
 
-        public Person Update(Person person)
+        public PersonVO Create(PersonVO person)
         {
-            return _repository.Update(person);;
+            var personEntity = _converter.Parse(person);
+            personEntity = _repository.Create(personEntity);
+            return _converter.Parse(personEntity);
+        }
+
+        public PersonVO Update(PersonVO person)
+        {
+            var personEntity = _converter.Parse(person);
+            personEntity = _repository.Update(personEntity);
+            return _converter.Parse(personEntity);
         }
 
         public void Delete(long id)

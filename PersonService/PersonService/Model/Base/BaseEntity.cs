@@ -5,6 +5,6 @@ namespace PersonService.Model.Base
     public class BaseEntity
     {
         [Column("id")]
-        public long id { get; set; }
+        public long Id { get; set; }
     }
 }

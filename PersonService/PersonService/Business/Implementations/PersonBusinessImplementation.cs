@@ -9,9 +9,9 @@ namespace PersonService.Business.Implementations
 {
     public class PersonBusinessImplementation : IPersonBusiness
     {
-        private readonly IPersonRepository _repository;
+        private readonly IRepository<Person> _repository;
 
-        public PersonBusinessImplementation(IPersonRepository respository)
+        public PersonBusinessImplementation(IRepository<Person> respository)
         {
             _repository = respository;
         }

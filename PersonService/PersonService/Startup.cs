@@ -9,7 +9,6 @@ using Microsoft.OpenApi.Models;
 using PersonService.Model.Context;
 using PersonService.Business;
 using PersonService.Business.Implementations;
-using PersonService.Repository.Implementations;
 using PersonService.Repository;
 using Serilog;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace PersonService
 
             //Dependency Injection
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
 
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
 

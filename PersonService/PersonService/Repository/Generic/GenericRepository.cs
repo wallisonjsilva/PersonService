@@ -9,7 +9,7 @@ namespace PersonService.Repository.Generic
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private MySQLContext _context;
+        protected MySQLContext _context;
 
         private DbSet<T> _dataset;
 
@@ -85,6 +85,25 @@ namespace PersonService.Repository.Generic
         public bool Exists(long id)
         {
             return _dataset.Any(b => b.Id.Equals(id));
+        }
+
+        public List<T> FindWithPagedSearch(string query)
+        {
+            return _dataset.FromSqlRaw<T>(query).ToList();
+        }
+
+        public int GetCount(string query)
+        {
+            var result = "";
+            using (var connection = _context.Database.GetDbConnection()) {
+                connection.Open();
+                using (var command = connection.CreateCommand()) {
+                    command.CommandText = query;
+                    result = command.ExecuteScalar().ToString();
+                }
+            }
+
+            return int.Parse(result);
         }
     }
 }

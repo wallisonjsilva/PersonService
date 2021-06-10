@@ -106,6 +106,7 @@ namespace PersonService
             services.AddTransient<ITokenService, TokenService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
             services.AddSwaggerGen(c =>

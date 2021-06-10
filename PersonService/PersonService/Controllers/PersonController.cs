@@ -5,11 +5,13 @@ using PersonService.Business;
 using PersonService.Data.VO;
 using PersonService.Hypermedia.Filters;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PersonService.Controllers
 {
     [ApiVersion("1")]
     [ApiController]
+    [Authorize("Bearer")]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonController : ControllerBase
     {

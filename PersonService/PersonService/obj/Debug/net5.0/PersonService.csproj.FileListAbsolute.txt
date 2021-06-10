@@ -49,3 +49,10 @@ C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonServic
 C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Serilog.Sinks.Console.dll
 C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
 C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Serilog.Sinks.File.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\wallison\Documents\projetos\Projetos ASP.Net\PersonService\PersonService\PersonService\PersonService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

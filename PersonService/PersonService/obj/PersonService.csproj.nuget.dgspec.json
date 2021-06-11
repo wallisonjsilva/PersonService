@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj": {}
+    "c:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj": {
+    "c:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
+        "projectUniqueName": "c:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
         "projectName": "PersonService",
-        "projectPath": "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
+        "projectPath": "c:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
         "packagesPath": "C:\\Users\\wallison\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\obj\\",
+        "outputPath": "c:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wallison\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -24,6 +24,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace PersonService
 {
@@ -99,9 +101,12 @@ namespace PersonService
             services.AddApiVersioning();
 
             //Dependency Injection
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
             services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
+            services.AddScoped<IFileBusiness, FileBusinessImplementation>();
 
             services.AddTransient<ITokenService, TokenService>();
 

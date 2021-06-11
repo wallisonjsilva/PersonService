@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VQOxvlk2GlUomnU21b2KuqCSnXizeXmire6sF+0HDetm/mhAlY4YJ6QQmnTy5yCUVvqYlN3ATRt7qTVYfo2FQQ==",
+  "dgSpecHash": "jXXZnyukEOT2n7uTgeYzksWxgEO6MbDRHx5LCNlsuNOwgn7G+KLXIDS49NVByJmRyLhOee/XIoo0965xSWseTA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
+  "projectFilePath": "c:\\Users\\wallison\\Documents\\projetos\\Projetos ASP.Net\\PersonService\\PersonService\\PersonService\\PersonService\\PersonService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wallison\\.nuget\\packages\\evolve\\3.0.0\\evolve.3.0.0.nupkg.sha512",
     "C:\\Users\\wallison\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.7\\microsoft.aspnetcore.authentication.jwtbearer.5.0.7.nupkg.sha512",
